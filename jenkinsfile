@@ -2,15 +2,9 @@ pipeline{
  agent{
   node{
    label 'ec2-rhel-node'
-   customWorkspace '/test1'
   }
  }
  stages{
-  stage (create){
-   steps{
-     sh 'mkdir /test1'
-   }
-  }
   stage (build){
    steps{
      tool name: 'mvn3.5.4', type: 'maven'
