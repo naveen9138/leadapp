@@ -13,21 +13,25 @@ pipeline{
   }
   stage (build){
    steps{
-    sh 'mvn clean'
+     tool name: 'mvn3.5.4', type: 'maven'
+     sh 'mvn clean'
 	}
 	}
   stage (mvn compile){
     steps {
-	 sh 'mvn compile'
+       tool name: 'mvn3.5.4', type: 'maven'
+       sh 'mvn compile'
 	 }
      }
   stage (test){
    steps {
+    tool name: 'mvn3.5.4', type: 'maven'
     sh 'mvn package'
    }
   }
   stage (install){
    steps {
+    tool name: 'mvn3.5.4', type: 'maven'
     sh 'mvn install'
    }
   }
