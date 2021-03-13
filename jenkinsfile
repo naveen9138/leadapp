@@ -7,18 +7,21 @@ pipeline {
  stages {
   stage (build) {
    steps {
+     tool name: 'jdk8.221', type: 'jdk'
      tool name: 'mvn3.5.4', type: 'maven'    
      sh 'mvn clean'
 	}
 	}
   stage (mvn compile) {
     steps {
+       tool name: 'jdk8.221', type: 'jdk' 
        tool name: 'mvn3.5.4', type: 'maven'
        sh 'mvn compile'
 	 }
      }
   stage (test) {
    steps {
+    tool name: 'jdk8.221', type: 'jdk'
     tool name: 'mvn3.5.4', type: 'maven'
     sh 'mvn package'
    }
