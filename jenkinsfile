@@ -8,7 +8,7 @@ pipeline{
  stages{
   stage (create){
    steps{
-     sh 'touch /test1'
+     sh 'mkdir /test1'
    }
   }
   stage (build){
