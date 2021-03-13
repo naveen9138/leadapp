@@ -1,0 +1,35 @@
+pipeline{
+ agent{
+  node{
+   label 'ec2-rhel-node'
+   customWorkspace '/test1'
+  }
+ }
+ stages{
+  stage (create){
+   steps{
+     sh 'touch /test1'
+   }
+  }
+  stage (build){
+   steps{
+    sh 'mvn clean'
+	}
+	}
+  stage (mvn compile){
+    steps {
+	 sh 'mvn compile'
+	 }
+     }
+  stage (test){
+   steps {
+    sh 'mvn package'
+   }
+  }
+  stage (install){
+   steps {
+    sh 'mvn install'
+   }
+  }
+ }
+} 
