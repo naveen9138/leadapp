@@ -1,29 +1,29 @@
-pipeline{
- agent{
-  node{
-   label 'ec2-rhel-node'
+pipeline {
+ agent { 
+  node {
+            label 'ec2-rhel-node'
+        }
   }
- }
- stages{
-  stage (build){
-   steps{
+ stages {
+  stage (build) {
+   steps {
      tool name: 'mvn3.5.4', type: 'maven'    
      sh 'mvn clean'
 	}
 	}
-  stage (mvn compile){
+  stage (mvn compile) {
     steps {
        tool name: 'mvn3.5.4', type: 'maven'
        sh 'mvn compile'
 	 }
      }
-  stage (test){
+  stage (test) {
    steps {
     tool name: 'mvn3.5.4', type: 'maven'
     sh 'mvn package'
    }
   }
-  stage (install){
+  stage (install) {
    steps {
     tool name: 'mvn3.5.4', type: 'maven'
     sh 'mvn install'
